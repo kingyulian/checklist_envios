@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Checklist Envíos</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; background: #f8f9fa; }
+        h1 { text-align: center; }
+        .formulario { margin-bottom: 20px; display: flex; gap: 10px; justify-content: center; }
+        input, button { padding: 6px; font-size: 14px; }
+        table { width: 100%; border-collapse: collapse; margin-top: 10px; }
+        th, td { border: 1px solid #ccc; padding: 8px; text-align: center; }
+        .enviado { background: #c8e6c9; }
+        .pendiente { background: #ffcdd2; }
+        a { text-decoration: none; margin: 0 5px; padding: 4px 8px; border-radius: 4px; background: #ddd; color: black; }
+        .acciones { display: flex; gap: 5px; justify-content: center; }
+    </style>
+</head>
+<body>
+    <h1>📦 Checklist de Envíos</h1>
+
+    <form method="POST" action="/agregar" class="formulario">
+        <input type="text" name="nombre" placeholder="Nombre de pieza" required>
+        <input type="number" name="cantidad" placeholder="Cantidad" value="1" min="1">
+        <input type="text" name="observaciones" placeholder="Observaciones">
+        <button type="submit">➕ Agregar</button>
+    </form>
+
+    <a href="/exportar_pdf" target="_blank">📄 Exportar a PDF</a>
+
+    <table>
+        <tr>
+            <th>Pieza</th>
+            <th>Cantidad</th>
+            <th>Estado</th>
+            <th>Observaciones</th>
+            <th>Acciones</th>
+        </tr>
+        {% for pieza in piezas %}
+        <tr class="{{ pieza.estado|lower }}">
+            <td>{{ pieza.nombre }}</td>
+            <td>{{ pieza.cantidad }}</td>
+            <td>{{ pieza.estado }}</td>
+            <td>{{ pieza.observaciones }}</td>
+            <td class="acciones">
+                <a href="/marcar/{{ pieza.id }}">✔️ Cambiar</a>
+                <a href="/eliminar/{{ pieza.id }}">🗑️ Eliminar</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
+    

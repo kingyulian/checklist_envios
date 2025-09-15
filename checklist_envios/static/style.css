@@ -1,0 +1,50 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+    background: #f8f9fa;
+}
+
+h1 {
+    text-align: center;
+}
+
+.formulario {
+    margin-bottom: 20px;
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+}
+
+input, button {
+    padding: 6px;
+    font-size: 14px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+th, td {
+    border: 1px solid #ccc;
+    padding: 8px;
+    text-align: center;
+}
+
+.enviado {
+    background: #c8e6c9; /* Verde */
+}
+
+.pendiente {
+    background: #ffcdd2; /* Rojo */
+}
+
+a {
+    text-decoration: none;
+    margin: 0 5px;
+    padding: 4px 8px;
+    border-radius: 4px;
+    background: #ddd;
+    color: black;
+}
