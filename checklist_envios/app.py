@@ -4,7 +4,12 @@ from reportlab.lib.pagesizes import letter
 from reportlab.pdfgen import canvas
 import os
 
-app = Flask(__name__)
+app = Flask(__name__)   # 👈 este nombre es obligatorio para Render
+
+@app.route("/")
+def home():
+    return "Checklist funcionando 🚀"
+
 
 # Configuración de SQLite
 BASE_DIR = os.path.abspath(os.path.dirname(__file__))
@@ -81,4 +86,5 @@ def exportar_pdf():
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5000)
+
 
